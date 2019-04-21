@@ -1,0 +1,30 @@
+--[[
+	//Script Name: PlayerRobuxBalance
+	//Script Version: 1.0.0
+	//Script Created By: I_Arkhie
+	//Script Descrition: Gets the Robux Balance of the player
+--]]
+
+warn("Script loaded")
+local Players = game.Players
+local Player = Players.LocalPlayer
+
+local Gui = Players("WaitForChild","PlayerGui")
+
+warn("Script loaded")
+local enabled 
+repeat wait() until Player
+if Gui:FindFirstChild("PlayerCore") then
+   enabled = true
+else
+   enabled = false
+end
+
+local Marketplace = game:GetService("MarketplaceService")
+
+while wait(1) do
+    if enabled then
+        Gui("WaitForChild", "PlayerCore").RobuxValue.Text =  Marketplace:GetRobuxBalance()
+        warn(Gui("WaitForChild", "PlayerCore").RobuxValue.Text)
+    end
+end
